@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C26BC69203206F800B087B9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C26BC68203206F800B087B9 /* Alamofire.framework */; };
+		7C26BC6D2032335900B087B9 /* Alamofire.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C26BC6C2032335800B087B9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7CAC0F0F1FFFBE9700C92FDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC0F0E1FFFBE9700C92FDD /* AppDelegate.swift */; };
 		7CAC0F111FFFBE9700C92FDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAC0F101FFFBE9700C92FDD /* ViewController.swift */; };
 		7CAC0F141FFFBE9700C92FDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0F121FFFBE9700C92FDD /* Main.storyboard */; };
@@ -15,8 +16,22 @@
 		7CAC0F191FFFBE9700C92FDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CAC0F171FFFBE9700C92FDD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7C26BC6B2032333400B087B9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7C26BC6D2032335900B087B9 /* Alamofire.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7C26BC68203206F800B087B9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		7C26BC6C2032335800B087B9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		7CAC0F0B1FFFBE9700C92FDD /* GrokRESTAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrokRESTAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CAC0F0E1FFFBE9700C92FDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CAC0F101FFFBE9700C92FDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +64,7 @@
 		7CAC0F021FFFBE9700C92FDD = {
 			isa = PBXGroup;
 			children = (
+				7C26BC6C2032335800B087B9 /* Alamofire.framework */,
 				7CAC0F0D1FFFBE9700C92FDD /* GrokRESTAPI */,
 				7CAC0F0C1FFFBE9700C92FDD /* Products */,
 				7C26BC67203206F800B087B9 /* Frameworks */,
@@ -87,6 +103,7 @@
 				7CAC0F081FFFBE9700C92FDD /* Frameworks */,
 				7CAC0F091FFFBE9700C92FDD /* Resources */,
 				7C26BC6A2032071C00B087B9 /* ShellScript */,
+				7C26BC6B2032333400B087B9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -147,16 +164,17 @@
 /* Begin PBXShellScriptBuildPhase section */
 		7C26BC6A2032071C00B087B9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework";
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
