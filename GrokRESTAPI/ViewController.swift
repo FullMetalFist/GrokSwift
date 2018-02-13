@@ -13,7 +13,44 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getRequestAlamo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Todo.todoByID(id: 1) { result in
+            if let error = result.error {
+                print("error calling POST on /todos/")
+                print(error)
+                return
+            }
+            guard let todo = result.value else {
+                print("error calling POST on /todos/, result is nil")
+                return
+            }
+            
+            print(todo.description())
+            print(todo.title)
+        }
+        
+        guard let newTodo = Todo(title: "First todo", id: nil, userId: 1, completedStatus: true) else {
+            print("error: newTodo isn't a Todo")
+            return
+        }
+        
+        newTodo.save { result in
+            guard result.error == nil else {
+                print("error calling POST on /todos/")
+                print(result.error)
+                return
+            }
+            guard let todo = result.value else {
+                print("error calling POST on /todos/, result is nil")
+                return
+            }
+            print(todo.description())
+            print(todo.title)
+        }
     }
     
     func getRequestAlamo() {
