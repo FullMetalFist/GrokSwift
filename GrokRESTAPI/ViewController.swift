@@ -17,8 +17,7 @@ class ViewController: UIViewController {
     }
     
     func getRequestAlamo() {
-        let todoEndpoint: String = "https://jsonplaceholder.typicode.com/todos/1"
-        Alamofire.request(todoEndpoint).responseJSON { response in
+        Alamofire.request(TodoRouter.get(1)).responseJSON { response in
             
             guard response.result.error == nil else {
                 print("error calling GET on /todos/1")
@@ -41,10 +40,9 @@ class ViewController: UIViewController {
     }
     
     func postRequestAlamo() {
-        let todoEndpoint: String = "https://jsonplaceholder.typicode.com/todos"
         
         let newTodo: [String: Any] = ["title": "First Alamo Post", "completed": 0, "userId": 1]
-        Alamofire.request(todoEndpoint, method: .post, parameters: newTodo, encoding: JSONEncoding.default).responseJSON { response in
+        Alamofire.request(TodoRouter.create(newTodo)).responseJSON { response in
             
             guard response.result.error == nil else {
                 print("error calling POST on /todos/1")
@@ -66,9 +64,8 @@ class ViewController: UIViewController {
     }
     
     func deleteRequestAlamo() {
-        let todoEndpoint: String = "https://jsonplaceholder.typicode.com/todos/1"
         
-        Alamofire.request(todoEndpoint, method: .delete).responseJSON { response in
+        Alamofire.request(TodoRouter.delete(1)).responseJSON { response in
             guard response.result.error == nil else {
                 print("error calling DELETE on /todos/1")
                 print(response.result.error!)
